@@ -14,10 +14,12 @@ export class UserListComponent implements OnInit {
   sortOrder: 'asc' | 'desc' = 'asc';
   sortCriterion: 'name' | 'email' = 'name';
   errorMessage: string = '';
+  isLoading: boolean = false;
 
   constructor(private userService: UserService) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.userService
       .getUsers()
       .pipe(
@@ -27,7 +29,10 @@ export class UserListComponent implements OnInit {
           return of([]);
         })
       )
-      .subscribe((users) => (this.users = users));
+      .subscribe((users) => {
+        this.users = users;
+        this.isLoading = false;
+      });
   }
   toggleSortOrder() {
     this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';

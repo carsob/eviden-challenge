@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FilterPipe } from './filter.pipe';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { SortByPipe } from './sort-by.pipe';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [AppComponent, UserListComponent, FilterPipe, SortByPipe],
@@ -31,6 +32,7 @@ import { SortByPipe } from './sort-by.pipe';
     MatInputModule,
     ReactiveFormsModule,
     MatButtonToggleModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
