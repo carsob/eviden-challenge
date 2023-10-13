@@ -11,6 +11,10 @@
     <mat-icon>{{ sortOrder === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
   </button>
 
+  <mat-card *ngIf="errorMessage" class="error-message mat-elevation-z2">
+    <mat-card-content>{{ errorMessage }}</mat-card-content>
+  </mat-card>
+
 <div *ngFor="let user of users | filter: searchTerm | sortBy: sortCriterion: sortOrder" class="user-card mat-elevation-z2">
     <mat-card>
       <mat-card-header>
