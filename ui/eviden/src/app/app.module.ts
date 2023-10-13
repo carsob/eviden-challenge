@@ -12,9 +12,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { UserListComponent } from './user-list/user-list.component';
 import { MatButtonModule } from '@angular/material/button';
-import { FilterPipe } from './filter.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { SortByPipe } from './sort-by.pipe';
+import { SortByPipe } from './pipes/sort-by.pipe';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
