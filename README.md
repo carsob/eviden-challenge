@@ -12,29 +12,29 @@ To run the application, you will need to have Node.js and Angular CLI installed 
 
 1. Clone this repository to your local machine:
 
-```cli
+```bash
 git clone https://github.com/carsob/eviden-challenge.git
 ```
 
 2. Navigate to the api folder and run the following command to install the dependencies:
 
-```cli
+```bash
 cd api
 npm install
 ```
 
 3. Navigate to the ui folder and run the following command to install the dependencies:
 
-```cli
+```bash
 cd ../ui/eviden
 npm install
 ```
 
-##Usage
+## Usage
 
 To run the API, navigate to the `api` folder and run the following command:
 
-```cli
+```bash
 node index.js
 ```
 
@@ -42,7 +42,7 @@ This will start the server on port 5038.
 
 To run the user interface, navigate to the `ui/enviden` folder and run the following command:
 
-```cli
+```bash
 ng serve
 ```
 
