@@ -1,0 +1,36 @@
+<mat-form-field>
+    <input matInput [(ngModel)]="searchTerm" placeholder="Search by name or email" />
+</mat-form-field>
+
+  <mat-button-toggle-group [(ngModel)]="sortCriterion">
+    <mat-button-toggle value="name">Name</mat-button-toggle>
+    <mat-button-toggle value="email">Email</mat-button-toggle>
+  </mat-button-toggle-group>
+  
+  <button mat-icon-button (click)="toggleSortOrder()">
+    <mat-icon>{{ sortOrder === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+  </button>
+
+<div *ngFor="let user of users | filter: searchTerm | sortBy: sortCriterion: sortOrder" class="user-card mat-elevation-z2">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="user-avatar">
+          <img [src]="user.avatar" alt="User Avatar">
+        </div>
+        <mat-card-title>{{ user.name }}</mat-card-title>
+        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+      </mat-card-header>
+ 
+    </mat-card>
+  </div>  
+  <!-- <section>
+    <div class="example-label">Raised</div>
+    <div class="example-button-row">
+      <button mat-raised-button>Basic</button>
+      <button mat-raised-button color="primary">Primary</button>
+      <button mat-raised-button color="accent">Accent</button>
+      <button mat-raised-button color="warn">Warn</button>
+      <button mat-raised-button disabled>Disabled</button>
+      <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+    </div>
+  </section> -->
