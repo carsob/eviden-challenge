@@ -57,7 +57,7 @@ const users = [
   },
   {
     id: 8,
-    name: 'Celene',
+    name: 'Celene update',
     email: 'cperulli7@howstuffworks.com',
     avatar: 'https://robohash.org/reprehenderititaqueadipisci.png?size=50x50&set=set1',
   },
