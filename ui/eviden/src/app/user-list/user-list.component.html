@@ -1,21 +1,25 @@
-<mat-form-field>
-    <input matInput [(ngModel)]="searchTerm" placeholder="Search by name or email" />
-</mat-form-field>
+<div class="filter-container">
+    <mat-form-field class="filter-field">
+        <input matInput [(ngModel)]="searchTerm" placeholder="Search by name or email" />
+    </mat-form-field>
+    <p>
+        Sort by:
+      <mat-button-toggle-group class="sort-group" [(ngModel)]="sortCriterion">
+        <mat-button-toggle value="name">Name</mat-button-toggle>
+        <mat-button-toggle value="email">Email</mat-button-toggle>
+      </mat-button-toggle-group>
+    </p>
+      
+      <button mat-icon-button class="sort-button" (click)="toggleSortOrder()">
+        <mat-icon>{{ sortOrder === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+      </button>
+</div>
 
-  <mat-button-toggle-group [(ngModel)]="sortCriterion">
-    <mat-button-toggle value="name">Name</mat-button-toggle>
-    <mat-button-toggle value="email">Email</mat-button-toggle>
-  </mat-button-toggle-group>
-  
-  <button mat-icon-button (click)="toggleSortOrder()">
-    <mat-icon>{{ sortOrder === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
-  </button>
-
-  <mat-card *ngIf="errorMessage" class="error-message mat-elevation-z2">
-    <mat-card-content>{{ errorMessage }}</mat-card-content>
+  <mat-card *ngIf="errorMessage$ | async" class="error-message mat-elevation-z2">
+    <mat-card-content>{{ errorMessage$ | async }}</mat-card-content>
   </mat-card>
 
-  <mat-progress-spinner *ngIf="isLoading" class="loading-indicator" mode="indeterminate"></mat-progress-spinner>
+  <mat-progress-spinner *ngIf="isLoading$ | async" class="loading-indicator" mode="indeterminate"></mat-progress-spinner>
 
 <div *ngFor="let user of users | filter: searchTerm | sortBy: sortCriterion: sortOrder" class="user-card mat-elevation-z2">
     <mat-card>

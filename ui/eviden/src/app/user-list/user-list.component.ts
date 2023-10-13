@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../models/User.model';
-import { catchError, of } from 'rxjs';
+import { Observable, catchError, finalize, of } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -13,25 +13,26 @@ export class UserListComponent implements OnInit {
   searchTerm: string = '';
   sortOrder: 'asc' | 'desc' = 'asc';
   sortCriterion: 'name' | 'email' = 'name';
-  errorMessage: string = '';
-  isLoading: boolean = false;
+  errorMessage$: Observable<string> = of('');
+  isLoading$: Observable<boolean> = of(false);
 
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.isLoading = true;
+    this.isLoading$ = of(true);
+
     this.userService
       .getUsers()
       .pipe(
         catchError((err) => {
           console.error(err);
-          this.errorMessage = err.message;
+          this.errorMessage$ = of(err.message);
           return of([]);
-        })
+        }),
+        finalize(() => (this.isLoading$ = of(false)))
       )
       .subscribe((users) => {
         this.users = users;
-        this.isLoading = false;
       });
   }
   toggleSortOrder() {

@@ -1,18 +1,100 @@
-.user-card {
-    background-color: red;
-    // color: white;
-    margin: 10px;
-  }
-  
-  .user-avatar img {
+$primary-color: #2196f3;
+$secondary-color: #f44336;
+$font-size: 16px;
+
+$small-screen: 600px;
+$medium-screen: 960px;
+$large-screen: 1280px;
+
+.user-avatar img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+    
+.loading-indicator {
+    margin: 20px auto;
+    display: block;
   }
-
+  
   .error-message {
     color: white;
     background-color: red;
-    padding: 10px;
-    margin-bottom: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+  }
+.user-list {
+    background-color: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+    font-size: $font-size;
+  }
+
+  .search-input {
+    border-radius: 4px;
+    padding: 8px;
+    font-size: $font-size;
+  }
+
+  .sort-button {
+    background-color: $primary-color;
+    color: #fff;
+    font-size: $font-size;
+  }
+  
+  .sort-button.active {
+    background-color: $secondary-color;
+  }
+
+  .user-card {
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 16px;
+  }
+
+  .filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    //margin-bottom: 16px;
+  }
+  
+  .filter-field {
+    width: 300px; 
+    margin-right: 16px;
+    // display: flex;
+    // align-items: center;
+  }
+  
+  .sort-group {
+    margin-right: 16px;
+  }
+  
+  .sort-button {
+    margin-right: 16px;
+  }
+
+  @media (max-width: $small-screen) {
+    .user-card {
+      margin: 8px;
+    }
+  }
+  
+  @media (min-width: $medium-screen) {
+    .user-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .user-card {
+      width: calc(100% - 32px);
+    }
+  }
+  
+  @media (min-width: $large-screen) {
+
+    .user-card {
+      width: calc(100% - 32px)
+    }
   }
